@@ -5,10 +5,14 @@ export const metadata = {
   description: "Login to your Finonest account",
 }
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
+interface SearchParams {
+  [key: string]: string | string[] | undefined
+}
+
+interface LoginPageProps {
+  searchParams: SearchParams
+}
+
+export default function LoginPage({ searchParams }: LoginPageProps) {
   return <ClientLoginPage searchParams={searchParams} />
 }

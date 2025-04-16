@@ -1,9 +1,24 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function HeroSection() {
+  const [animationComplete, setAnimationComplete] = useState(false)
+  const croppedImage = "/cropped_image.png"
+
+  useEffect(() => {
+    // Simulate animation duration (e.g., 3 seconds)
+    const timer = setTimeout(() => {
+      setAnimationComplete(true)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <section className="relative bg-gradient-to-b from-primary/10 to-white py-12 md:py-20 lg:py-32 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px:8">
@@ -32,18 +47,20 @@ export default function HeroSection() {
               </Link>
             </div>
           </div>
-          <div className="relative mt-8 lg:mt-0">
+          <div className="relative mt-8 lg:mt-0 w-1/5 mx-auto lg:mx-0 lg:w-auto">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
-            <Image
-              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3"
-              alt="Financial Growth"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-2xl relative z-10 w-full h-auto"
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
-            />
+            {croppedImage && (
+              <Image
+                src={croppedImage || "/placeholder.svg"}
+                alt="Finonest Logo"
+                width={152}
+                height={152}
+                className="rounded-full shadow-2xl relative z-10 w-full h-auto"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
+              />
+            )}
           </div>
         </div>
       </div>
