@@ -116,11 +116,11 @@ export default function Header() {
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250212-WA0006.jpg-mLUw8vsQNdZXFXUtNiEh0Y19Meyh7B.jpeg"
             alt="Finonest Logo"
-            width={40}
-            height={40}
-            className="rounded-full"
+            width={48}
+            height={48}
+            className="rounded-full w-[48px] h-[48px] sm:w-[44px] sm:h-[44px] md:w-[40px] md:h-[40px]"
           />
-          <span className="ml-2 text-lg md:text-xl font-bold text-primary">Finonest</span>
+          <span className="ml-2 text-xl md:text-lg lg:text-xl font-bold text-primary">Finonest</span>
         </Link>
 
         {/* Desktop Navigation */}

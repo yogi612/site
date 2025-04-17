@@ -47,19 +47,20 @@ export default function HeroSection() {
               </Link>
             </div>
           </div>
-          <div className="relative mt-8 lg:mt-0 w-1/5 mx-auto lg:mx-0 lg:w-auto">
+          <div className="relative mt-8 lg:mt-0 mx-auto lg:mx-0 flex justify-center lg:justify-end">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
             {croppedImage && (
-              <Image
-                src={croppedImage || "/placeholder.svg"}
-                alt="Finonest Logo"
-                width={152}
-                height={152}
-                className="rounded-full shadow-2xl relative z-10 w-full h-auto"
-                loading="lazy"
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
-              />
+              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                <Image
+                  src={croppedImage || "/placeholder.svg"}
+                  alt="Finonest Logo"
+                  fill
+                  className="rounded-full shadow-2xl relative z-10 object-cover"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
+                />
+              </div>
             )}
           </div>
         </div>
