@@ -8,7 +8,8 @@ import { useEffect, useState } from "react"
 
 export default function HeroSection() {
   const [animationComplete, setAnimationComplete] = useState(false)
-  const croppedImage = "/cropped_image.png"
+  // Use the original image path
+  const logoPath = "/cropped_image.png"
 
   useEffect(() => {
     // Simulate animation duration (e.g., 3 seconds)
@@ -23,7 +24,22 @@ export default function HeroSection() {
     <section className="relative bg-gradient-to-b from-primary/10 to-white py-12 md:py-20 lg:py-32 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px:8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="text-center lg:text-left space-y-4 md:space-y-6">
+          {/* Image container - order-first on mobile, order-last on lg screens */}
+          <div className="relative mt-0 mb-8 lg:mt-0 lg:mb-0 mx-auto lg:mx-0 flex justify-center lg:justify-end order-first lg:order-last">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+              <Image
+                src={logoPath || "/placeholder.svg"}
+                alt="Finonest - Trust Comes First"
+                fill
+                className="rounded-full shadow-2xl relative z-10 object-contain"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Text content - order-last on mobile, order-first on lg screens */}
+          <div className="text-center lg:text-left space-y-4 md:space-y-6 order-last lg:order-first">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
               Smart Financial <span className="text-primary">Solutions</span> for Everyone
             </h1>
@@ -46,22 +62,6 @@ export default function HeroSection() {
                 </Button>
               </Link>
             </div>
-          </div>
-          <div className="relative mt-8 lg:mt-0 mx-auto lg:mx-0 flex justify-center lg:justify-end">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
-            {croppedImage && (
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                <Image
-                  src={croppedImage || "/placeholder.svg"}
-                  alt="Finonest Logo"
-                  fill
-                  className="rounded-full shadow-2xl relative z-10 object-cover"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>
