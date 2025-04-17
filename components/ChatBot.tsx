@@ -89,17 +89,6 @@ export function ChatBot() {
 
   return (
     <>
-      {/* Chat Button */}
-      {!isOpen && (
-        <button
-          onClick={toggleChat}
-          className="fixed bottom-6 right-6 bg-primary text-white rounded-full p-4 shadow-lg hover:bg-primary/90 transition-colors z-40"
-          aria-label="Open chat"
-        >
-          <MessageCircle className="h-6 w-6" />
-        </button>
-      )}
-
       {/* Chat Window */}
       {isOpen && (
         <div

@@ -1,25 +1,23 @@
 import HeroSection from "@/components/HeroSection"
-import WhatWeProvide from "@/components/WhatWeProvide"
-import WhyChooseFinonest from "@/components/WhyChooseFinonest"
 import OurServices from "@/components/OurServices"
-import BecomePartner from "@/components/BecomePartner"
-import TrustedBrands from "@/components/TrustedBrands"
+import WhyChooseUs from "@/components/WhyChooseUs"
 import Testimonials from "@/components/Testimonials"
 import LatestNews from "@/components/LatestNews"
-import ContactSupport from "@/components/ContactSupport"
+import TrustedBrands from "@/components/TrustedBrands"
+import OurProducts from "@/components/OurProducts"
+import GabsWidget from "@/components/GabsWidget"
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection />
-      <WhatWeProvide />
-      <WhyChooseFinonest />
+      <OurProducts />
       <OurServices />
-      <BecomePartner />
+      <WhyChooseUs />
+      <GabsWidget />
       <TrustedBrands />
       <Testimonials />
       <LatestNews />
-      <ContactSupport />
     </div>
   )
 }
