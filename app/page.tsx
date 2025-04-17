@@ -7,7 +7,6 @@ import TrustedBrands from "@/components/TrustedBrands"
 import Testimonials from "@/components/Testimonials"
 import LatestNews from "@/components/LatestNews"
 import ContactSupport from "@/components/ContactSupport"
-import GabsWidget from "@/components/GabsWidget"
 
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
       <OurServices />
       <BecomePartner />
       <TrustedBrands />
-      <GabsWidget />
       <Testimonials />
       <LatestNews />
       <ContactSupport />

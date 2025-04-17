@@ -11,7 +11,7 @@ import { SupabaseProvider } from "@/components/SupabaseProvider"
 import { AuthProvider } from "@/components/AuthProvider"
 import { LeadPopup } from "@/components/LeadPopup"
 import ChatBot from "@/components/ChatBot"
-import GabsWidget from "@/components/GabsWidget"
+import GabsChat from "@/components/GabsChat"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -39,7 +39,7 @@ export default function RootLayout({
             <ScrollToTop />
             <LeadPopup />
             <ChatBot />
-            <GabsWidget />
+            <GabsChat />
           </SupabaseProvider>
         </AuthProvider>
       </body>
