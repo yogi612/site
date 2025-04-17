@@ -24,10 +24,10 @@ export default function HeroSection() {
     <section className="relative bg-gradient-to-b from-primary/10 to-white py-12 md:py-20 lg:py-32 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px:8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Image container - order-first on mobile, order-last on lg screens */}
-          <div className="relative mt-0 mb-8 lg:mt-0 lg:mb-0 mx-auto lg:mx-0 flex justify-center lg:justify-end order-first lg:order-last">
+          {/* Image container - hidden on mobile, visible on lg screens */}
+          <div className="hidden lg:flex relative mt-0 mb-8 lg:mt-0 lg:mb-0 mx-auto lg:mx-0 justify-center lg:justify-end lg:order-last">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+            <div className="relative w-80 h-80">
               <Image
                 src={logoPath || "/placeholder.svg"}
                 alt="Finonest - Trust Comes First"
@@ -38,8 +38,8 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Text content - order-last on mobile, order-first on lg screens */}
-          <div className="text-center lg:text-left space-y-4 md:space-y-6 order-last lg:order-first">
+          {/* Text content - full width on mobile, half width on lg screens */}
+          <div className="text-center lg:text-left space-y-4 md:space-y-6 lg:order-first col-span-1 lg:col-span-1">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
               Smart Financial <span className="text-primary">Solutions</span> for Everyone
             </h1>
