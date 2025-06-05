@@ -180,8 +180,8 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={() => handleLinkClick("/employee")} variant="default" size="sm">
-              Employee Portal
+            <Button onClick={() => handleLinkClick("/login")} variant="default" size="sm">
+              Login / Sign Up
             </Button>
           )}
         </div>
@@ -312,8 +312,8 @@ export default function Header() {
                     </Button>
                   </div>
                 ) : (
-                  <Button className="w-full" variant="default" onClick={() => handleLinkClick("/employee")}>
-                    Employee Portal
+                  <Button className="w-full" variant="default" onClick={() => handleLinkClick("/login")}>
+                    Login / Sign Up
                   </Button>
                 )}
               </div>

@@ -1,22 +1,15 @@
-import type { Metadata } from "next"
-import { AdminLayout } from "@/components/admin/AdminLayout"
 import { LeadsManager } from "@/components/admin/leads/LeadsManager"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Leads Management | Finonest Admin",
-  description: "Manage and track leads in the Finonest admin dashboard",
+  description: "Manage and track leads from the popup form",
 }
 
 export default function LeadsPage() {
   return (
-    <AdminLayout>
-      <div className="space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Leads Management</h1>
-          <p className="text-muted-foreground">Track and manage incoming leads from your website.</p>
-        </div>
-        <LeadsManager />
-      </div>
-    </AdminLayout>
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-6">Leads Management</h1>
+      <LeadsManager />
+    </div>
   )
 }

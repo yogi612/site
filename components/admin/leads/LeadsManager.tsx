@@ -113,7 +113,7 @@ export function LeadsManager() {
 
   const exportToCSV = () => {
     // Create CSV content
-    const headers = ["ID", "Name", "Email", "Phone", "Interested In", "Status"]
+    const headers = ["ID", "Name", "Email", "Phone", "Interested In", "Status", "Created At"]
     const csvContent = [
       headers.join(","),
       ...filteredLeads.map((lead) =>
@@ -124,6 +124,7 @@ export function LeadsManager() {
           `"${lead.phone.replace(/"/g, '""')}"`,
           `"${lead.interested_in.replace(/"/g, '""')}"`,
           lead.status,
+          new Date(lead.created_at).toLocaleString(),
         ].join(","),
       ),
     ].join("\n")
@@ -250,6 +251,7 @@ export function LeadsManager() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
@@ -258,7 +260,7 @@ export function LeadsManager() {
             <tbody className="bg-white divide-y divide-gray-200">
               {isLoading ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-4 text-center">
+                  <td colSpan={6} className="px-6 py-4 text-center">
                     <div className="flex justify-center">
                       <Loader2 className="h-6 w-6 animate-spin text-gray-500" />
                     </div>
@@ -266,7 +268,7 @@ export function LeadsManager() {
                 </tr>
               ) : filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
+                  <td colSpan={6} className="px-6 py-4 text-center text-gray-500">
                     No leads found
                   </td>
                 </tr>
@@ -291,6 +293,9 @@ export function LeadsManager() {
                       >
                         {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
                       </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                      {new Date(lead.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <Select value={lead.status} onValueChange={(value) => updateLeadStatus(lead.id, value)}>

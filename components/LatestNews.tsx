@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { OptimizedImage } from "@/components/ui/optimized-image"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 const newsItems = [
@@ -43,13 +43,12 @@ export default function LatestNews() {
               key={item.title}
               className="bg-white rounded-lg shadow-lg border-2 border-red-500 p-6 hover:shadow-xl transition-shadow"
             >
-              <OptimizedImage
-                src={item.image}
+              <Image
+                src={item.image || null}
                 alt={item.title}
                 width={400}
                 height={225}
                 className="rounded-lg object-cover mb-4"
-                fallbackCategory="general"
               />
               <p className="text-gray-600 text-sm mb-2">{item.date}</p>
               <h3 className="text-xl font-semibold mb-4">{item.title}</h3>

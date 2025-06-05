@@ -1,10 +1,14 @@
-import { UsersManagement } from "@/components/admin/users/UsersManagement"
+import { AdminUsersContent } from "@/components/admin/users/UsersContent"
+import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@/lib/auth"
 
-export const metadata = {
-  title: "User Management - Finonest Admin",
-  description: "Manage users in the Finonest platform",
-}
+export default async function AdminUsersPage() {
+  const session = await getServerSession(authOptions)
 
-export default function UsersPage() {
-  return <UsersManagement />
+  if (!session || session.user.role !== "admin") {
+    redirect("/login?callbackUrl=/admin/users")
+  }
+
+  return <AdminUsersContent />
 }

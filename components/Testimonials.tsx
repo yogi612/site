@@ -1,4 +1,4 @@
-import { OptimizedImage } from "@/components/ui/optimized-image"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 
 const testimonials = [
@@ -35,13 +35,12 @@ export default function Testimonials() {
             <Card key={index} className="border-2 border-gray-200">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <OptimizedImage
-                    src={testimonial.image}
-                    alt={`${testimonial.name}, ${testimonial.role}`}
+                  <Image
+                    src={testimonial.image || null}
+                    alt={testimonial.name}
                     width={50}
                     height={50}
                     className="rounded-full mr-4"
-                    fallbackCategory="person"
                   />
                   <div>
                     <h3 className="font-semibold">{testimonial.name}</h3>
