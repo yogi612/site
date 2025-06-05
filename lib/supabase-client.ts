@@ -1,6 +1,7 @@
 "use client"
 
 import { createBrowserClient } from "@supabase/ssr"
+import type { Database } from "@/types/supabase"
 
 // Create a singleton instance to prevent multiple instances
 let supabaseClient: ReturnType<typeof createBrowserClient> | null = null
@@ -13,9 +14,7 @@ export function createClientSupabaseClient() {
 
   if (!supabaseClient) {
     try {
-      console.log("Creating Supabase client with URL:", process.env.NEXT_PUBLIC_SUPABASE_URL)
-
-      supabaseClient = createBrowserClient(
+      supabaseClient = createBrowserClient<Database>(
         process.env.NEXT_PUBLIC_SUPABASE_URL,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
         {
@@ -23,8 +22,6 @@ export function createClientSupabaseClient() {
             flowType: "pkce",
             persistSession: true,
             detectSessionInUrl: true,
-            // Let Supabase use its configured Site URL for redirects
-            // This will use the Site URL you configured in the Supabase dashboard
           },
           global: {
             headers: {
@@ -70,34 +67,34 @@ function createMockSupabaseClient() {
   } as any
 }
 
-// Debug function to check client-side Supabase connection
-export async function checkClientSupabaseConnection() {
+// Export a direct supabase client instance for use in components
+export const supabase = createClientSupabaseClient()
+
+// Helper function to get user role
+export async function getUserRole(userId: string) {
   try {
-    // First, check if we can even create the client
-    const supabase = createClientSupabaseClient()
+    const { data, error } = await supabase.from("profiles").select("role").eq("id", userId).single()
 
-    // Log the current origin for debugging
-    if (typeof window !== "undefined") {
-      console.log("Current origin:", window.location.origin)
+    if (error || !data) {
+      console.error("Error fetching user role:", error)
+      return "user" // Default role
     }
 
-    // Then check if we can reach the Supabase API
-    // Use a simple auth check instead of a database query as it's more likely to succeed
-    // even with limited permissions
-    const { data, error } = await supabase.auth.getSession()
-
-    if (error) {
-      console.error("Client Supabase connection test failed:", error)
-      return { success: false, error: error.message }
-    }
-
-    console.log("Client Supabase connection successful")
-    return { success: true }
-  } catch (error: any) {
-    console.error("Client Supabase connection test error:", error)
-    return {
-      success: false,
-      error: error.message || "Failed to connect to the database. Please check your internet connection.",
-    }
+    return data.role
+  } catch (error) {
+    console.error("Error in getUserRole:", error)
+    return "user" // Default role on error
   }
+}
+
+// Helper function to check if user is admin
+export async function isUserAdmin(userId: string) {
+  const role = await getUserRole(userId)
+  return role === "admin"
+}
+
+// Helper function to check if user is employee or admin
+export async function isUserStaff(userId: string) {
+  const role = await getUserRole(userId)
+  return role === "admin" || role === "employee"
 }

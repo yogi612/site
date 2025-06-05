@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
@@ -28,12 +28,13 @@ export default function HeroSection() {
           <div className="hidden lg:flex relative mt-0 mb-8 lg:mt-0 lg:mb-0 mx-auto lg:mx-0 justify-center lg:justify-end lg:order-last">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full filter blur-3xl"></div>
             <div className="relative w-80 h-80">
-              <Image
-                src={logoPath || "/placeholder.svg"}
+              <OptimizedImage
+                src={logoPath}
                 alt="Finonest - Trust Comes First"
                 fill
                 className="rounded-full shadow-2xl relative z-10 object-contain"
                 priority
+                fallbackCategory="logo"
               />
             </div>
           </div>

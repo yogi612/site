@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 
 export default function TrustedBrands() {
   const partners = [
@@ -159,17 +159,18 @@ export default function TrustedBrands() {
           {partners.map((partner) => (
             <div key={partner.name} className="flex justify-center items-center p-4 bg-white rounded-lg shadow-md">
               {partner.logo ? (
-                <Image
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
+                <OptimizedImage
+                  src={partner.logo}
+                  alt={`${partner.name} logo`}
                   width={120}
                   height={60}
                   className="object-contain"
+                  fallbackCategory="logo"
                   style={{
-                    width: "auto", // Make sure width is auto
-                    height: "auto", // Make sure height is auto
-                    maxWidth: "100%", // Ensure it doesn't exceed its container
-                    maxHeight: "100%", // Ensure it doesn't exceed its container
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
                   }}
                 />
               ) : (

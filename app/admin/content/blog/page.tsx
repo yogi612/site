@@ -1,14 +1,10 @@
-import { getServerSession } from "next-auth/next"
-import { redirect } from "next/navigation"
-import { authOptions } from "@/lib/auth"
-import { BlogContent } from "@/components/admin/content/BlogContent"
+import { BlogPostsManagement } from "@/components/admin/content/BlogPostsManagement"
 
-export default async function AdminBlogPage() {
-  const session = await getServerSession(authOptions)
+export const metadata = {
+  title: "Blog Posts Management",
+  description: "Manage your blog posts",
+}
 
-  if (!session || session.user.role !== "admin") {
-    redirect("/login?callbackUrl=/admin/content/blog")
-  }
-
-  return <BlogContent />
+export default function BlogPostsPage() {
+  return <BlogPostsManagement />
 }

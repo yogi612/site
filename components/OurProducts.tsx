@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import { CreditCard, BarChart2, Home, LineChart } from "lucide-react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -105,12 +105,13 @@ export default function OurProducts() {
                 <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl sm:hover:scale-105 border-2 border-red-500 h-full flex flex-col justify-between">
                   <div className="flex flex-col items-center">
                     <div className="flex justify-center mb-4 aspect-video w-full max-w-[300px] mx-auto">
-                      <Image
-                        src={product.image || null}
+                      <OptimizedImage
+                        src={product.image}
                         alt={product.name}
                         width={200}
                         height={150}
                         className="rounded-lg object-cover w-full h-full"
+                        fallbackCategory="product"
                       />
                     </div>
                     <div className="flex justify-center mb-4">

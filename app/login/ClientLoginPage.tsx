@@ -2,173 +2,63 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
-import { createClientSupabaseClient } from "@/lib/supabase-client"
+import { useAuth } from "@/components/AuthProvider"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
-import { Loader2 } from "lucide-react"
-import { useAuth } from "@/components/AuthProvider"
+import { Eye, EyeOff, Loader2 } from "lucide-react"
+import { PageLayout } from "@/components/PageLayout"
 
-export default function ClientLoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [verificationMessage, setVerificationMessage] = useState<string | null>(null)
+interface SearchParams {
+  [key: string]: string | string[] | undefined
+}
+
+export default function ClientLoginPage({ searchParams }: { searchParams: SearchParams }) {
+  const { signIn } = useAuth()
   const router = useRouter()
-  const { user } = useAuth()
-  const searchParams = useSearchParams()
+  const params = useSearchParams()
   const { toast } = useToast()
 
-  useEffect(() => {
-    if (user?.role === "employee") {
-      router.push("/employee-dashboard")
-    } else if (user?.role === "user") {
-      router.push("/dashboard")
-    }
-  }, [user, router])
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
-  useEffect(() => {
-    // Check for verification status from URL
-    const verified = searchParams.get("verified")
-    const errorMsg = searchParams.get("error")
-
-    if (verified === "true") {
-      setVerificationMessage("Your email has been verified. You can now log in.")
-      toast({
-        title: "Email Verified",
-        description: "Your email has been verified. You can now log in.",
-      })
-    } else if (verified === "pending") {
-      setVerificationMessage("Please check your email to verify your account.")
-      toast({
-        title: "Verification Email Sent",
-        description: "Please check your email to verify your account.",
-      })
-    }
-
-    if (errorMsg) {
-      setError(decodeURIComponent(errorMsg))
-      toast({
-        title: "Authentication Error",
-        description: decodeURIComponent(errorMsg),
-        variant: "destructive",
-      })
-    }
-  }, [searchParams, toast])
+  const redirectPath = params.get("redirect") || "/dashboard"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError(null)
-
-    if (!email || !password) {
-      setError("Email and password are required")
-      return
-    }
-
+    setError("")
     setIsLoading(true)
 
     try {
-      console.log("Starting login process...")
-      const supabase = createClientSupabaseClient()
+      const { success, error } = await signIn(email, password)
 
-      // Log connection status
-      const connectionStatus = await supabase.auth.getSession()
-      console.log("Connection status:", connectionStatus.error ? "Error" : "Connected")
-
-      // Attempt login
-      console.log("Attempting login with email:", email)
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-
-      if (error) {
-        console.error("Login error:", error)
-        throw error
-      }
-
-      console.log("Login successful:", data)
-
-      // Show success message
-      toast({
-        title: "Login successful!",
-        description: "You are now logged in.",
-      })
-
-      // Redirect to dashboard
-      if (user?.role === "admin") {
-        router.push("/admin")
-      } else if (user?.role === "employee") {
-        router.push("/employee-dashboard")
+      if (success) {
+        toast({
+          title: "Login successful",
+          description: "Welcome back!",
+        })
+        router.push(redirectPath)
       } else {
-        router.push("/dashboard")
+        setError(error || "Invalid email or password")
+        toast({
+          title: "Login failed",
+          description: error || "Invalid email or password",
+          variant: "destructive",
+        })
       }
-    } catch (err: any) {
-      console.error("Error during login:", err)
-
-      let errorMessage = err.message || "An error occurred during login"
-
-      // Handle specific error cases
-      if (err.message?.includes("Invalid login credentials")) {
-        errorMessage = "Invalid email or password. Please try again."
-      } else if (err.message?.includes("Email not confirmed")) {
-        errorMessage = "Please verify your email before logging in."
-      } else if (err.message?.includes("Failed to fetch")) {
-        errorMessage = "Network error. Please check your internet connection and try again."
-      }
-
-      setError(errorMessage)
-
+    } catch (err) {
+      setError("An unexpected error occurred")
       toast({
         title: "Login failed",
-        description: errorMessage,
-        variant: "destructive",
-      })
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleResendVerification = async () => {
-    if (!email) {
-      setError("Please enter your email address to resend verification")
-      return
-    }
-
-    try {
-      setIsLoading(true)
-      const supabase = createClientSupabaseClient()
-
-      const { error } = await supabase.auth.resend({
-        type: "signup",
-        email,
-        options: {
-          // Let Supabase use its configured Site URL
-          // No need to specify redirectTo here
-          // redirectTo: `${window.location.origin}/auth/callback`,
-        },
-      })
-
-      if (error) throw error
-
-      toast({
-        title: "Verification Email Sent",
-        description: "Please check your email to verify your account.",
-      })
-
-      setVerificationMessage("Verification email resent. Please check your inbox.")
-    } catch (err: any) {
-      console.error("Error resending verification:", err)
-      setError(err.message || "Failed to resend verification email")
-
-      toast({
-        title: "Failed to resend",
-        description: err.message || "Failed to resend verification email",
+        description: "An unexpected error occurred",
         variant: "destructive",
       })
     } finally {
@@ -177,73 +67,93 @@ export default function ClientLoginPage() {
   }
 
   return (
-    <div className="max-w-md w-full mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold text-center mb-6">Login to Your Account</h1>
+    <PageLayout title="Login">
+      <div className="flex justify-center items-center min-h-[calc(100vh-200px)] px-4">
+        <Card className="w-full max-w-md border-0 shadow-lg">
+          <CardHeader className="space-y-1">
+            <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
+            <CardDescription className="text-center">Enter your credentials to access your account</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && <div className="p-3 rounded-md bg-red-50 text-red-500 text-sm mb-4">{error}</div>}
 
-      {verificationMessage && <div className="bg-blue-50 text-blue-700 p-3 rounded-md mb-4">{verificationMessage}</div>}
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={isLoading}
+                  className="w-full"
+                />
+              </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <div className="flex justify-between items-center">
-            <Label htmlFor="password">Password</Label>
-            <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-              Forgot password?
-            </Link>
-          </div>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <Label htmlFor="password">Password</Label>
+                  <Link href="/forgot-password" className="text-sm text-primary hover:underline">
+                    Forgot password?
+                  </Link>
+                </div>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    disabled={isLoading}
+                    className="w-full pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    tabIndex={-1}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </div>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  "Sign In"
+                )}
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-4">
+            <div className="text-center text-sm">
+              Don't have an account?{" "}
+              <Link href="/signup" className="text-primary hover:underline">
+                Sign up
+              </Link>
+            </div>
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Logging in...
-            </>
-          ) : (
-            "Login"
-          )}
-        </Button>
-      </form>
-
-      <div className="mt-4 text-center">
-        <p className="text-sm text-gray-600">
-          Don't have an account?{" "}
-          <Link href="/signup" className="text-primary hover:underline">
-            Sign up
-          </Link>
-        </p>
+            <div className="text-xs text-center text-gray-500">
+              By continuing, you agree to our{" "}
+              <Link href="/terms-conditions" className="underline">
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy-policy" className="underline">
+                Privacy Policy
+              </Link>
+            </div>
+          </CardFooter>
+        </Card>
       </div>
-
-      <div className="mt-4 text-center">
-        <button
-          type="button"
-          onClick={handleResendVerification}
-          className="text-sm text-primary hover:underline"
-          disabled={isLoading}
-        >
-          Resend verification email
-        </button>
-      </div>
-    </div>
+    </PageLayout>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import { CreditCard, PiggyBank, BarChart2, Home } from "lucide-react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -61,7 +61,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 }
 
-export default function OurProducts() {
+export default function OurServices() {
   const isMobile = useIsMobile()
   const [isDesktop, setIsDesktop] = useState(false)
   const controls = useAnimation()
@@ -105,12 +105,13 @@ export default function OurProducts() {
                 <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl sm:hover:scale-105 border-2 border-red-500 h-full flex flex-col justify-between">
                   <div className="flex flex-col items-center">
                     <div className="flex justify-center mb-4 aspect-video w-full max-w-[300px] mx-auto">
-                      <Image
-                        src={service.image || null}
+                      <OptimizedImage
+                        src={service.image}
                         alt={service.name}
                         width={200}
                         height={150}
                         className="rounded-lg object-cover w-full h-full"
+                        fallbackCategory="service"
                       />
                     </div>
                     <div className="flex justify-center mb-4">
@@ -127,8 +128,8 @@ export default function OurProducts() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link href="/products" passHref>
-            <Button size="lg">View All Products</Button>
+          <Link href="/services" passHref>
+            <Button size="lg">View All Services</Button>
           </Link>
         </div>
       </div>
