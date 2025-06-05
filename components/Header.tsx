@@ -180,7 +180,11 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={() => handleLinkClick("/login")} variant="default" size="sm">
+            <Button
+              onClick={() => (window.location.href = "https://finonestloanform.vercel.app/")}
+              variant="default"
+              size="sm"
+            >
               Login / Sign Up
             </Button>
           )}
@@ -312,7 +316,11 @@ export default function Header() {
                     </Button>
                   </div>
                 ) : (
-                  <Button className="w-full" variant="default" onClick={() => handleLinkClick("/login")}>
+                  <Button
+                    className="w-full"
+                    variant="default"
+                    onClick={() => (window.location.href = "https://finonestloanform.vercel.app/")}
+                  >
                     Login / Sign Up
                   </Button>
                 )}

@@ -7,6 +7,14 @@
     {
       "source": "/employee/(.*)",
       "destination": "https://finonestloanform.vercel.app/$1"
+    },
+    {
+      "source": "/admin",
+      "destination": "https://finonestloanform.vercel.app/admin"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "https://finonestloanform.vercel.app/admin/$1"
     }
   ],
   "headers": [
