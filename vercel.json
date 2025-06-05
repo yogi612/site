@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/employee/:path*",
-      "destination": "https://finonestloanform.vercel.app/:path*"
+      "source": "/employee",
+      "destination": "https://finonestloanform.vercel.app/"
+    },
+    {
+      "source": "/employee/(.*)",
+      "destination": "https://finonestloanform.vercel.app/$1"
     }
   ],
   "headers": [
