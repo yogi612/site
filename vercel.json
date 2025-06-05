@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/employee",
-      "destination": "https://finonestloanform.vercel.app/"
+      "destination": "https://www.finonest.org/employee"
     },
     {
       "source": "/employee/(.*)",
-      "destination": "https://finonestloanform.vercel.app/$1"
+      "destination": "https://www.finonest.org/employee/$1"
     },
     {
       "source": "/admin",
