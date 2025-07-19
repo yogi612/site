@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/employee",
-      "destination": "https://www.finonest.org/employee"
+      "destination": "https://dashboard.finonest.com/"
     },
     {
       "source": "/employee/(.*)",
-      "destination": "https://www.finonest.org/employee/$1"
+      "destination": "https://dashboard.finonest.com/$1"
     },
     {
       "source": "/admin",
-      "destination": "https://finonestloanform.vercel.app/admin"
+      "destination": "https://dashboard.finonest.com/"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "https://finonestloanform.vercel.app/admin/$1"
+      "destination": "https://dashboard.finonest.com/$1"
     }
   ],
   "headers": [

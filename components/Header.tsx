@@ -181,7 +181,7 @@ export default function Header() {
             </DropdownMenu>
           ) : (
             <Button
-              onClick={() => (window.location.href = "https://www.finonest.org/employee")}
+              onClick={() => (window.location.href = "https://dashboard.finonest.com/")}
               variant="default"
               size="sm"
             >
@@ -319,7 +319,7 @@ export default function Header() {
                   <Button
                     className="w-full"
                     variant="default"
-                    onClick={() => (window.location.href = "https://www.finonest.org/employee")}
+                    onClick={() => (window.location.href = "https://dashboard.finonest.com/")}
                   >
                     Login / Sign Up
                   </Button>
