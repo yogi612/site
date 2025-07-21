@@ -120,24 +120,24 @@ const leadershipTeam = [
 
 const departmentHeads = [
   {
-    name: "Rohit Bhargava",
-    division: "ML/HL/Working Capital",
-    experience: "8 years (HDFC, ICICI)",
-  },
-  {
     name: "Prateek Rathore",
     division: "Unsecured Loans",
     experience: "7 years (ICICI)",
   },
   {
-    name: "Abhijeet Sengupta",
-    division: "IT & Tech",
-    experience: "22 years in tech industry",
+    name: "Yogendra Singh",
+    division: "IT Manager",
+    experience: "2+ years in tech industry",
   },
   {
-    name: "Akshay Banerjee",
-    division: "Marketing",
-    experience: "6.5 years, ex-Shikhar Masale",
+    name: "Pranay Mukherjee",
+    division: "Marketing Manager",
+    experience: "6.5 years",
+  },
+  {
+    name: "Ajay Thwani",
+    division: "Operations Manager",
+    experience: "4+ years",
   },
 ]
 
