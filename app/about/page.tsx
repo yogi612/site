@@ -132,7 +132,7 @@ const departmentHeads = [
   {
     name: "Pranay Mukherjee",
     division: "Marketing Manager",
-    experience: "6.5 years",
+    experience: "3.5+ years",
   },
   {
     name: "Ajay Thwani",
