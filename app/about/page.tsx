@@ -142,25 +142,34 @@ const departmentHeads = [
 ]
 
 const branchLocations = [
-  "Dausa",
-  "Palsana",
-  "Sikandra",
-  "Mansarovar",
-  "Gopalpura Bypass",
-  "Kanakpura",
-  "Udaipur I",
-  "Udaipur II",
-  "Pratap Nagar",
-  "Kaladera",
-  "Govindpura",
-  "Malpura",
-  "Pali",
-  "Vaishali Nagar",
-  "Vidhyadhar Nagar",
-  "Bandikui",
-  "Sirsi Road",
-  "Udaipur III",
+  { name: "Dausa" },
+  { name: "Palsana" },
+  { name: "Sikandra" },
+  { name: "Mansarovar" },
+  { name: "Gopalpura Bypass" },
+  { name: "Kanakpura" },
+  { name: "Udaipur I" },
+  { name: "Udaipur II" },
+  { name: "Pratap Nagar" },
+  { name: "Kaladera" },
+  { name: "Govindpura" },
+  { name: "Malpura" },
+  { name: "Pali" },
+  { name: "Vaishali Nagar" },
+  { name: "Vidhyadhar Nagar" },
+  { name: "Bandikui" },
+  { name: "Sirsi Road" },
+  { name: "Udaipur III" },
+  {
+    name: "Pune",
+    address: `Finonest India (Pune)
+Geo Workspace, 2nd Floor, Anandi Complex,
+Near Ganapati Chowk,
+Vishal Nagar (Pimple Nilakh),
+Pune 411027`,
+  },
 ]
+
 
 const testimonials = [
   {
@@ -196,7 +205,7 @@ export default function AboutPage() {
             <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Transforming Financial Services Since 2017</h1>
               <p className="text-xl opacity-90 mb-8">
-                One of the top 3 used car loan providers in Rajasthan, with 18 branches and counting
+                One of the top 3 used car loan providers in Rajasthan, with 19 branches and counting
               </p>
               <div className="flex justify-center">
                 <a
@@ -539,16 +548,27 @@ export default function AboutPage() {
             <div className="relative z-10 p-8">
               <p className="text-lg text-center mb-6">We operate 18 branches across Rajasthan:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {branchLocations.map((location, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white p-3 rounded-lg shadow-md border border-gray-100 flex items-center justify-center"
-                  >
-                    <MapPin className="h-4 w-4 text-primary mr-2" />
-                    <span>{location}</span>
-                  </motion.div>
-                ))}
+                {branchLocations.map((location, index) => {
+                  const name = typeof location === "string" ? location : location.name;
+                  const address = typeof location === "object" ? location.address : null;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.05 }}
+                      className="group relative bg-white p-3 rounded-lg shadow-md border border-gray-100 flex items-center justify-center text-center"
+                    >
+                      <MapPin className="h-4 w-4 text-primary mr-2" />
+                      <span>{name}</span>
+
+                      {address && (
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-72 bg-black/90 text-white text-sm p-3 rounded-lg shadow-xl whitespace-pre-line opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
+                          {address}
+                        </div>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
