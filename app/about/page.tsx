@@ -110,7 +110,7 @@ const leadershipTeam = [
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
-    name: "CA Prateek Somani",
+    name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
     image: "/images/prateek-somani.jpeg",
