@@ -118,28 +118,6 @@ const leadershipTeam = [
   },
 ]
 
-const departmentHeads = [
-  {
-    name: "Prateek Rathore",
-    division: "Unsecured Loans",
-    experience: "7 years (ICICI)",
-  },
-  {
-    name: "Yogendra Singh",
-    division: "IT Manager",
-    experience: "2+ years in tech industry",
-  },
-  {
-    name: "Pranay Mukherjee",
-    division: "Marketing Manager",
-    experience: "3.5+ years",
-  },
-  {
-    name: "Ajay Thwani",
-    division: "Operations Manager",
-    experience: "4+ years",
-  },
-]
 
 const branchLocations = [
   { name: "Dausa" },
