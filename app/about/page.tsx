@@ -49,8 +49,8 @@ const staggerContainer = {
 const stats = [
   { number: "9+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
-  { number: "₹10Cr+", label: "Annual Turnover", icon: DollarSign },
-  { number: "18", label: "Branches", icon: MapPin },
+  { number: "₹20Cr+", label: "Annual Turnover", icon: Rupees },
+  { number: "30+", label: "Branches", icon: MapPin },
 ]
 
 const values = [
@@ -202,25 +202,21 @@ const testimonials = [
 // Added Department Heads data
 const departmentHeads = [
   {
-    name: "Ankit Sharma",
+    name: "Prateek Rathore",
     division: "Operations Head",
     experience: "10+ years in financial operations, optimizing workflows and ensuring smooth service delivery.",
   },
   {
-    name: "Pooja Singh",
+    name: "Pranay Mukherjee",
     division: "Marketing Lead",
     experience: "8 years experience in digital marketing and brand strategy for financial products.",
   },
   {
-    name: "Rahul Kumar",
-    division: "Risk Management",
-    experience: "12 years experience in credit risk assessment and compliance in the lending sector.",
+    name: "Yogendra Singh",
+    division: "IT Management",
+    experience: "2 years experience in credit risk assessment and compliance in the lending sector.",
   },
-  {
-    name: "Deepika Mehta",
-    division: "Customer Relations",
-    experience: "7 years experience in building strong customer relationships and ensuring satisfaction.",
-  },
+  
 ];
 
 export default function AboutPage() {
@@ -400,7 +396,7 @@ export default function AboutPage() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white px-8 py-6 rounded-xl shadow-lg text-center w-full md:w-auto"
               >
-                <p className="text-gray-500 mb-2">FY 2023-24 Turnover (projected)</p>
+                <p className="text-gray-500 mb-2">FY 2024-25 Turnover (projected)</p>
                 <div className="flex items-center justify-center">
                   <DollarSign className="h-8 w-8 text-primary mr-2" />
                   <p className="text-4xl font-bold text-primary">₹10 crore</p>
@@ -591,7 +587,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl"></div>
             <div className="relative z-10 p-8">
-              <p className="text-lg text-center mb-6">We operate 18 branches across Rajasthan:</p>
+              <p className="text-lg text-center mb-6">We operate 30+ branches across Rajasthan:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 {branchLocations.map((location, index) => {
                   const name = typeof location === "string" ? location : location.name;
