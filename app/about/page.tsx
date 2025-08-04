@@ -1,10 +1,28 @@
-"use client"
-
 import { Target, Shield, Trophy, Heart, MapPin, DollarSign, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
 import Image from "next/image"
-import PageLayout from "@/components/PageLayout"
 import { useState } from "react"
 import { motion } from "framer-motion"
+
+// PageLayout component (mocked for self-contained code)
+// In a real Next.js app, this would be imported from "@/components/PageLayout"
+const PageLayout = ({ children, title }) => {
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
+      <header className="bg-white shadow-sm py-4 px-6">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-primary">{title}</h1>
+          {/* Add navigation or other header elements here if needed */}
+        </div>
+      </header>
+      <main className="max-w-7xl mx-auto py-12 px-6">
+        {children}
+      </main>
+      <footer className="bg-gray-800 text-white py-8 px-6 text-center">
+        <p>&copy; 2024 Finonest India Pvt. Ltd. All rights reserved.</p>
+      </footer>
+    </div>
+  )
+}
 
 // Animation variants
 const fadeIn = {
@@ -99,22 +117,29 @@ const leadershipTeam = [
     name: "Surya Mohan Roy",
     role: "Leadership, Financial Analysis, Business Development",
     experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-    image: "/images/surya-roy.jpeg",
+    image: "https://placehold.co/200x200/FF5733/FFFFFF?text=Surya", // Placeholder image
     quote: "Our mission is to democratize financial services across India.",
   },
   {
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
     experience: "7 years experience (Used Car Loans lead)",
-    image: "/images/atishay-jain.jpeg",
+    image: "https://placehold.co/200x200/33FF57/FFFFFF?text=Atishay", // Placeholder image
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
     name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
-    image: "/images/prateek-somani.jpeg",
+    image: "https://placehold.co/200x200/5733FF/FFFFFF?text=Prateek", // Placeholder image
     quote: "We're building financial solutions that truly serve our customers' needs.",
+  },
+  {
+    name: "Sanam Makkar",
+    role: "Board of Directors",
+    experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership.",
+    image: "https://placehold.co/200x200/FF33A1/FFFFFF?text=Sanam", // Placeholder image
+    quote: "Strategic governance and innovation are key to our sustained growth.",
   },
 ]
 
@@ -154,21 +179,45 @@ const testimonials = [
     name: "Rajesh Sharma",
     position: "Business Owner",
     quote: "Finonest helped me secure a business loan when I needed it most. Their process was smooth and efficient.",
-    image: "/confident-indian-professional.png",
+    image: "https://placehold.co/60x60/87CEEB/FFFFFF?text=RS", // Placeholder image
   },
   {
     name: "Priya Patel",
     position: "Homeowner",
     quote: "The team at Finonest made my home loan journey stress-free. I'm grateful for their expert guidance.",
-    image: "/vibrant-indian-smile.png",
+    image: "https://placehold.co/60x60/FFD700/FFFFFF?text=PP", // Placeholder image
   },
   {
     name: "Vikram Singh",
     position: "Entrepreneur",
     quote: "Their working capital solutions helped my business grow exponentially. Highly recommended!",
-    image: "/confident-indian-businessman.png",
+    image: "https://placehold.co/60x60/98FB98/FFFFFF?text=VS", // Placeholder image
   },
 ]
+
+// Added Department Heads data
+const departmentHeads = [
+  {
+    name: "Ankit Sharma",
+    division: "Operations Head",
+    experience: "10+ years in financial operations, optimizing workflows and ensuring smooth service delivery.",
+  },
+  {
+    name: "Pooja Singh",
+    division: "Marketing Lead",
+    experience: "8 years experience in digital marketing and brand strategy for financial products.",
+  },
+  {
+    name: "Rahul Kumar",
+    division: "Risk Management",
+    experience: "12 years experience in credit risk assessment and compliance in the lending sector.",
+  },
+  {
+    name: "Deepika Mehta",
+    division: "Customer Relations",
+    experience: "7 years experience in building strong customer relationships and ensuring satisfaction.",
+  },
+];
 
 export default function AboutPage() {
   const [activeLeader, setActiveLeader] = useState(0)
@@ -250,11 +299,15 @@ export default function AboutPage() {
             <div className="space-y-4">
               <p className="text-lg">
                 <strong>Finonest India Pvt. Ltd.</strong> Founded by Surya Mohan Roy and CA Prateek Somani in 2015 under the brand name Finance Hackers, and joined by Atishay Jain as Co-founder in 2018, Finonest India Pvt Ltd has grown into a dynamic and trusted player in the financial services sector.
-.
               </p>
               <p className="text-lg">
                 Finonest specializes in customer acquisition for a diverse range of financial products including loans, credit cards, insurance, and investment solutions. With established partnerships across 38+ banks and NBFCs, we deliver customized financial offerings that serve customers' real-world needs.
-
+              </p>
+              <p className="text-lg">
+                Operating from its strong base in Rajasthan, Finonest has expanded its footprint to Gujarat and Maharashtra, with more than 30 operational branches and a committed workforce of over 200 professionals.
+              </p>
+              <p className="text-lg">
+                In a strategic move to strengthen governance and innovation, Sanam Makkar joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary mt-6">
                 <h3 className="font-bold text-lg mb-2">Our Key Strengths</h3>
@@ -263,19 +316,25 @@ export default function AboutPage() {
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Operating from its strong base in Rajasthan</span>
+                    <span>Operating from its strong base in Rajasthan.</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Finonest has expanded its footprint to Gujarat and Maharashtra</span>
+                    <span>Expanded its footprint to Gujarat and Maharashtra.</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>We’re on a mission to make financial services more accessible and efficient, with plans to expand to 10 states by the end of FY2026–27. Finonest stands committed to transparency, customer-centric solutions, and building long-term relationships.</span>
+                    <span>Plans to expand to 10 states by the end of FY2026–27.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
+                      <Shield className="h-4 w-4 text-primary" />
+                    </div>
+                    <span>Committed to transparency, customer-centric solutions, and building long-term relationships.</span>
                   </li>
                 </ul>
               </div>
@@ -385,11 +444,12 @@ export default function AboutPage() {
                   <span className="sr-only">{leader.name}</span>
                   <div className="w-12 h-12 rounded-full overflow-hidden">
                     <Image
-                      src={leader.image || "/placeholder.svg"}
+                      src={leader.image || "https://placehold.co/48x48/CCCCCC/000000?text=User"}
                       alt={leader.name}
                       width={48}
                       height={48}
                       className="object-cover"
+                      onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/48x48/CCCCCC/000000?text=User" }}
                     />
                   </div>
                 </button>
@@ -410,11 +470,12 @@ export default function AboutPage() {
                     <div className="relative inline-block">
                       <div className="absolute inset-0 bg-primary/20 rounded-full transform -rotate-6"></div>
                       <Image
-                        src={leadershipTeam[activeLeader].image || "/placeholder.svg"}
+                        src={leadershipTeam[activeLeader].image || "https://placehold.co/200x200/CCCCCC/000000?text=User"}
                         alt={leadershipTeam[activeLeader].name}
                         width={200}
                         height={200}
                         className="rounded-full relative z-10"
+                        onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/200x200/CCCCCC/000000?text=User" }}
                       />
                     </div>
                     <h3 className="text-2xl font-bold mt-4">{leadershipTeam[activeLeader].name}</h3>
@@ -485,11 +546,12 @@ export default function AboutPage() {
               <motion.div key={index} whileHover={{ scale: 1.03 }} className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center mb-4">
                   <Image
-                    src={testimonial.image || "/placeholder.svg"}
+                    src={testimonial.image || "https://placehold.co/60x60/CCCCCC/000000?text=User"}
                     alt={testimonial.name}
                     width={60}
                     height={60}
                     className="rounded-full mr-4"
+                    onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/60x60/CCCCCC/000000?text=User" }}
                   />
                   <div>
                     <h3 className="font-bold">{testimonial.name}</h3>
