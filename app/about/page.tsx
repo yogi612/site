@@ -1,8 +1,7 @@
 "use client"
 
-import { Target, Shield, Trophy, Heart, MapPin, DollarSign, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
-import Image from "next/image"
-// import PageLayout from "@/components/PageLayout" // In a real Next.js app, this would be imported
+import { Target, Shield, Trophy, Heart, MapPin, IndianRupee, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
+// import Image from "next/image" // Removed this line to fix the error
 import { useState } from "react"
 import { motion } from "framer-motion"
 
@@ -23,7 +22,7 @@ const PageLayout = ({ children, title }) => {
         {children}
       </main>
       <footer className="bg-gray-800 text-white py-8 px-6 text-center">
-        <p>&copy; 2024 Finonest India Pvt. Ltd. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Finonest India Pvt. Ltd. All rights reserved.</p>
       </footer>
     </div>
   )
@@ -49,7 +48,7 @@ const staggerContainer = {
 const stats = [
   { number: "9+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
-  { number: "₹20Cr+", label: "Annual Turnover"},
+  { number: "₹20Cr+", label: "Annual Turnover", icon: IndianRupee }, // Fixed: Added icon property
   { number: "30+", label: "Branches", icon: MapPin },
 ]
 
@@ -117,7 +116,6 @@ const coreBusinessAreas = [
   { name: "Home Loans", code: "HL", color: "bg-red-500" },
   { name: "Car Loan", code: "CL", color: "bg-black-500" },
   { name: "Working Capital Loans", code: "WC", color: "bg-teal-500" },
-  
 ]
 
 const leadershipTeam = [
@@ -125,28 +123,28 @@ const leadershipTeam = [
     name: "Surya Mohan Roy",
     role: "Leadership, Financial Analysis, Business Development",
     experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-    image: "/images/surya-roy.jpeg", // Corrected image source
+    image: "/images/surya-roy.jpeg",
     quote: "Our mission is to democratize financial services across India.",
   },
   {
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
     experience: "7 years experience (Used Car Loans lead)",
-    image: "/images/atishay-jain.jpeg", // Corrected image source
+    image: "/images/atishay-jain.jpeg",
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
     name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
-    image: "/images/prateek-somani.jpeg", // Corrected image source
+    image: "/images/prateek-somani.jpeg",
     quote: "We're building financial solutions that truly serve our customers' needs.",
   },
   {
     name: "Sanam Makkar",
     role: "Board of Directors",
     experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.",
-    image: "/images/sanam.png", // Corrected image source
+    image: "/images/sanam.png",
     quote: "Strategic governance and innovation are key to our sustained growth.",
   },
 ]
@@ -185,23 +183,22 @@ const testimonials = [
     name: "Rajesh Sharma",
     position: "Business Owner",
     quote: "Finonest helped me secure a business loan when I needed it most. Their process was smooth and efficient.",
-    image: "https://placehold.co/60x60/87CEEB/FFFFFF?text=RS", // Placeholder image
+    image: "https://placehold.co/60x60/87CEEB/FFFFFF?text=RS",
   },
   {
     name: "Priya Patel",
     position: "Homeowner",
     quote: "The team at Finonest made my home loan journey stress-free. I'm grateful for their expert guidance.",
-    image: "https://placehold.co/60x60/FFD700/FFFFFF?text=PP", // Placeholder image
+    image: "https://placehold.co/60x60/FFD700/FFFFFF?text=PP",
   },
   {
     name: "Vikram Singh",
     position: "Entrepreneur",
     quote: "Their working capital solutions helped my business grow exponentially. Highly recommended!",
-    image: "https://placehold.co/60x60/98FB98/FFFFFF?text=VS", // Placeholder image
+    image: "https://placehold.co/60x60/98FB98/FFFFFF?text=VS",
   },
 ]
 
-// Added Department Heads data
 const departmentHeads = [
   {
     name: "Prateek Rathore",
@@ -218,7 +215,6 @@ const departmentHeads = [
     division: "IT Management",
     experience: "2 years experience in credit risk assessment and compliance in the lending sector.",
   },
-  
 ];
 
 export default function AboutPage() {
@@ -258,13 +254,14 @@ export default function AboutPage() {
           className="py-8"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <motion.div
-                key={index}
+                key={stat.label}
                 variants={fadeIn}
                 className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300"
               >
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  {/* This will now render correctly */}
                   <stat.icon className="h-8 w-8 text-primary" />
                 </div>
                 <p className="text-4xl font-bold text-primary mb-1">{stat.number}</p>
@@ -285,7 +282,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-lg"></div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg"></div>
-            <Image
+            <img
               src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3"
               alt="Finonest team"
               width={1000}
@@ -360,9 +357,9 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {coreBusinessAreas.map((area, index) => (
+            {coreBusinessAreas.map((area) => (
               <motion.div
-                key={index}
+                key={area.name}
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
               >
@@ -400,7 +397,7 @@ export default function AboutPage() {
               >
                 <p className="text-gray-500 mb-2">FY 2024-25 Turnover (projected)</p>
                 <div className="flex items-center justify-center">
-                  <DollarSign className="h-8 w-8 text-primary mr-2" />
+                  <IndianRupee className="h-8 w-8 text-primary mr-2" />
                   <p className="text-4xl font-bold text-primary">₹10 crore</p>
                 </div>
               </motion.div>
@@ -438,7 +435,7 @@ export default function AboutPage() {
             <div className="flex justify-center mb-8">
               {leadershipTeam.map((leader, idx) => (
                 <button
-                  key={idx}
+                  key={leader.name}
                   onClick={() => setActiveLeader(idx)}
                   className={`mx-2 p-2 rounded-full transition-all duration-300 ${
                     activeLeader === idx ? "bg-primary text-white" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
@@ -446,8 +443,8 @@ export default function AboutPage() {
                 >
                   <span className="sr-only">{leader.name}</span>
                   <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={leader.image || "https://placehold.co/48x48/CCCCCC/000000?text=User"}
+                    <img
+                      src={leader.image}
                       alt={leader.name}
                       width={48}
                       height={48}
@@ -472,8 +469,8 @@ export default function AboutPage() {
                   <div className="text-center">
                     <div className="relative inline-block">
                       <div className="absolute inset-0 bg-primary/20 rounded-full transform -rotate-6"></div>
-                      <Image
-                        src={leadershipTeam[activeLeader].image || "https://placehold.co/200x200/CCCCCC/000000?text=User"}
+                      <img
+                        src={leadershipTeam[activeLeader].image}
                         alt={leadershipTeam[activeLeader].name}
                         width={200}
                         height={200}
@@ -516,9 +513,9 @@ export default function AboutPage() {
               <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
             </span>
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {departmentHeads.map((head, index) => (
-              <motion.div key={index} whileHover={{ y: -5 }} className="bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {departmentHeads.map((head) => (
+              <motion.div key={head.name} whileHover={{ y: -5 }} className="bg-white rounded-xl shadow-md overflow-hidden">
                 <div className="h-2 bg-primary"></div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-1">{head.name}</h3>
@@ -545,11 +542,11 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <motion.div key={index} whileHover={{ scale: 1.03 }} className="bg-white p-6 rounded-xl shadow-lg">
+            {testimonials.map((testimonial) => (
+              <motion.div key={testimonial.name} whileHover={{ scale: 1.03 }} className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center mb-4">
-                  <Image
-                    src={testimonial.image || "https://placehold.co/60x60/CCCCCC/000000?text=User"}
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     width={60}
                     height={60}
@@ -591,22 +588,19 @@ export default function AboutPage() {
             <div className="relative z-10 p-8">
               <p className="text-lg text-center mb-6">We operate 30+ branches across Rajasthan:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {branchLocations.map((location, index) => {
-                  const name = typeof location === "string" ? location : location.name;
-                  const address = typeof location === "object" ? location.address : null;
-
+                {branchLocations.map((location) => {
                   return (
                     <motion.div
-                      key={index}
+                      key={location.name}
                       whileHover={{ scale: 1.05 }}
                       className="group relative bg-white p-3 rounded-lg shadow-md border border-gray-100 flex items-center justify-center text-center"
                     >
                       <MapPin className="h-4 w-4 text-primary mr-2" />
-                      <span>{name}</span>
+                      <span>{location.name}</span>
 
-                      {address && (
+                      {location.address && (
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-72 bg-black/90 text-white text-sm p-3 rounded-lg shadow-xl whitespace-pre-line opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
-                          {address}
+                          {location.address}
                         </div>
                       )}
                     </motion.div>
@@ -638,7 +632,7 @@ export default function AboutPage() {
             <div className="relative z-10">
               {milestones.map((milestone, index) => (
                 <motion.div
-                  key={index}
+                  key={milestone.year}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -687,9 +681,9 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <motion.div
-                key={index}
+                key={value.title}
                 variants={fadeIn}
                 whileHover={{ y: -10 }}
                 className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
@@ -715,7 +709,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-lg"></div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-lg"></div>
-            <Image
+            <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3"
               alt="Finonest team meeting"
               width={1000}
