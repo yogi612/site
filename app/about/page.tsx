@@ -123,7 +123,7 @@ const leadershipTeam = [
     name: "Surya Mohan Roy",
     role: "Leadership, Financial Analysis, Business Development",
     experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-    image: "https://placehold.co/200x200/FF5733/FFFFFF?text=Surya", // Placeholder image
+    image: "/images/surya-roy.jpeg", // Placeholder image
     quote: "Our mission is to democratize financial services across India.",
   },
   {
