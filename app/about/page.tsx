@@ -49,7 +49,7 @@ const staggerContainer = {
 const stats = [
   { number: "9+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
-  { number: "₹20Cr+", label: "Annual Turnover", icon: Rupees },
+  { number: "₹20Cr+", label: "Annual Turnover"},
   { number: "30+", label: "Branches", icon: MapPin },
 ]
 
