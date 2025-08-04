@@ -200,28 +200,6 @@ const testimonials = [
 ]
 
 // Added Department Heads data
-const departmentHeads = [
-  {
-    name: "Ankit Sharma",
-    division: "Operations Head",
-    experience: "10+ years in financial operations, optimizing workflows and ensuring smooth service delivery.",
-  },
-  {
-    name: "Pooja Singh",
-    division: "Marketing Lead",
-    experience: "8 years experience in digital marketing and brand strategy for financial products.",
-  },
-  {
-    name: "Rahul Kumar",
-    division: "Risk Management",
-    experience: "12 years experience in credit risk assessment and compliance in the lending sector.",
-  },
-  {
-    name: "Deepika Mehta",
-    division: "Customer Relations",
-    experience: "7 years experience in building strong customer relationships and ensuring satisfaction.",
-  },
-];
 
 export default function AboutPage() {
   const [activeLeader, setActiveLeader] = useState(0)
