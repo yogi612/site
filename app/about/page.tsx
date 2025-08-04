@@ -6,7 +6,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-// Mocked PageLayout component for self-contained code.
+
 // In your actual Next.js project, ensure your "@/components/PageLayout"
 // is also marked with "use client" if it contains interactive elements or
 // renders client-side components.
