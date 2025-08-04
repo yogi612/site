@@ -181,9 +181,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 rounded-3xl"></div>
           <div className="relative z-10 py-16 px-8 text-white">
             <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Transforming Financial Services Since 2017</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4"> Financial Services Since 2015</h1>
               <p className="text-xl opacity-90 mb-8">
-                One of the top 3 used car loan providers in Rajasthan, with 19 branches and counting
+                One of the top 2 used car loan providers in Rajasthan, with 30+ branches and counting
               </p>
               <div className="flex justify-center">
                 <a
@@ -249,12 +249,12 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4">
               <p className="text-lg">
-                <strong>Finonest India Pvt. Ltd.</strong> was established in 2017 and has quickly grown to become one of
-                the top 3 used car loan providers in Rajasthan.
+                <strong>Finonest India Pvt. Ltd.</strong> Founded by Surya Mohan Roy and CA Prateek Somani in 2015 under the brand name Finance Hackers, and joined by Atishay Jain as Co-founder in 2018, Finonest India Pvt Ltd has grown into a dynamic and trusted player in the financial services sector.
+.
               </p>
               <p className="text-lg">
-                We specialize in used car loans and broader financial services, with plans to expand to Gujarat and
-                Madhya Pradesh in the next quarter.
+                Finonest specializes in customer acquisition for a diverse range of financial products including loans, credit cards, insurance, and investment solutions. With established partnerships across 38+ banks and NBFCs, we deliver customized financial offerings that serve customers' real-world needs.
+
               </p>
               <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary mt-6">
                 <h3 className="font-bold text-lg mb-2">Our Key Strengths</h3>
@@ -263,19 +263,19 @@ export default function AboutPage() {
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>In-house operations and sales team</span>
+                    <span>Operating from its strong base in Rajasthan</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>360° service across multiple loan products</span>
+                    <span>Finonest has expanded its footprint to Gujarat and Maharashtra</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Strong post-sales support and client retention</span>
+                    <span>We’re on a mission to make financial services more accessible and efficient, with plans to expand to 10 states by the end of FY2026–27. <br>Finonest stands committed to transparency, customer-centric solutions, and building long-term relationships.</span>
                   </li>
                 </ul>
               </div>
