@@ -123,28 +123,28 @@ const leadershipTeam = [
     name: "Surya Mohan Roy",
     role: "Leadership, Financial Analysis, Business Development",
     experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-    image: "/images/surya-roy.jpeg", // Placeholder image
+    image: "/images/surya-roy.jpeg", // Corrected image source
     quote: "Our mission is to democratize financial services across India.",
   },
   {
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
     experience: "7 years experience (Used Car Loans lead)",
-    image: "public/images/atishay-jain.jpeg", // Placeholder image
+    image: "/images/atishay-jain.jpeg", // Corrected image source
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
     name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
-    image: "public/images/prateek-somani.jpeg", // Placeholder image
+    image: "/images/prateek-somani.jpeg", // Corrected image source
     quote: "We're building financial solutions that truly serve our customers' needs.",
   },
   {
     name: "Sanam Makkar",
     role: "Board of Directors",
     experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.",
-    image: "public/images/sanam.png", // Placeholder image
+    image: "/images/sanam.png", // Corrected image source
     quote: "Strategic governance and innovation are key to our sustained growth.",
   },
 ]
@@ -200,6 +200,28 @@ const testimonials = [
 ]
 
 // Added Department Heads data
+const departmentHeads = [
+  {
+    name: "Ankit Sharma",
+    division: "Operations Head",
+    experience: "10+ years in financial operations, optimizing workflows and ensuring smooth service delivery.",
+  },
+  {
+    name: "Pooja Singh",
+    division: "Marketing Lead",
+    experience: "8 years experience in digital marketing and brand strategy for financial products.",
+  },
+  {
+    name: "Rahul Kumar",
+    division: "Risk Management",
+    experience: "12 years experience in credit risk assessment and compliance in the lending sector.",
+  },
+  {
+    name: "Deepika Mehta",
+    division: "Customer Relations",
+    experience: "7 years experience in building strong customer relationships and ensuring satisfaction.",
+  },
+];
 
 export default function AboutPage() {
   const [activeLeader, setActiveLeader] = useState(0)
