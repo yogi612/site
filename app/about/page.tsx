@@ -1,10 +1,15 @@
+"use client"
+
 import { Target, Shield, Trophy, Heart, MapPin, DollarSign, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
 import Image from "next/image"
+// import PageLayout from "@/components/PageLayout" // In a real Next.js app, this would be imported
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-// PageLayout component (mocked for self-contained code)
-// In a real Next.js app, this would be imported from "@/components/PageLayout"
+// Mocked PageLayout component for self-contained code.
+// In your actual Next.js project, ensure your "@/components/PageLayout"
+// is also marked with "use client" if it contains interactive elements or
+// renders client-side components.
 const PageLayout = ({ children, title }) => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
@@ -24,7 +29,7 @@ const PageLayout = ({ children, title }) => {
   )
 }
 
-// Animation variants
+// Animation variants for Framer Motion
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -40,6 +45,7 @@ const staggerContainer = {
   },
 }
 
+// Static data for the page sections
 const stats = [
   { number: "9+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
@@ -137,12 +143,11 @@ const leadershipTeam = [
   {
     name: "Sanam Makkar",
     role: "Board of Directors",
-    experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership.",
+    experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.",
     image: "https://placehold.co/200x200/FF33A1/FFFFFF?text=Sanam", // Placeholder image
     quote: "Strategic governance and innovation are key to our sustained growth.",
   },
 ]
-
 
 const branchLocations = [
   { name: "Dausa" },
@@ -172,7 +177,6 @@ Vishal Nagar (Pimple Nilakh),
 Pune 411027`,
   },
 ]
-
 
 const testimonials = [
   {
@@ -289,6 +293,7 @@ export default function AboutPage() {
               width={1000}
               height={600}
               className="rounded-lg shadow-xl relative z-10"
+              onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/1000x600/CCCCCC/000000?text=Finonest+Team" }}
             />
           </div>
           <div>
@@ -322,19 +327,19 @@ export default function AboutPage() {
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Expanded its footprint to Gujarat and Maharashtra.</span>
+                    <span>Expanded its footprint to Gujarat and Maharashtra, with over 30 operational branches and 200+ professionals.</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Plans to expand to 10 states by the end of FY2026–27.</span>
+                    <span>Sanam Makkar joined the Board of Directors in 2025, enhancing governance and innovation.</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Committed to transparency, customer-centric solutions, and building long-term relationships.</span>
+                    <span>Plans to expand to 10 states by the end of FY2026–27, committed to transparency and customer-centric solutions.</span>
                   </li>
                 </ul>
               </div>
@@ -718,6 +723,7 @@ export default function AboutPage() {
               width={1000}
               height={600}
               className="rounded-xl shadow-2xl relative z-10"
+              onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/1000x600/CCCCCC/000000?text=Team+Meeting" }}
             />
           </div>
         </motion.section>
