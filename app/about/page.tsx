@@ -130,21 +130,21 @@ const leadershipTeam = [
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
     experience: "7 years experience (Used Car Loans lead)",
-    image: "public/images/atishay-jain.jpeg/200x200/33FF57/FFFFFF?text=Atishay", // Placeholder image
+    image: "public/images/atishay-jain.jpeg", // Placeholder image
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
     name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
-    image: "public/images/prateek-somani.jpeg/200x200/5733FF/FFFFFF?text=Prateek", // Placeholder image
+    image: "public/images/prateek-somani.jpeg", // Placeholder image
     quote: "We're building financial solutions that truly serve our customers' needs.",
   },
   {
     name: "Sanam Makkar",
     role: "Board of Directors",
     experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.",
-    image: "public/images/sanam.png/200x200/FF33A1/FFFFFF?text=Sanam", // Placeholder image
+    image: "public/images/sanam.png", // Placeholder image
     quote: "Strategic governance and innovation are key to our sustained growth.",
   },
 ]
