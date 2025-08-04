@@ -23,7 +23,7 @@ const staggerContainer = {
 }
 
 const stats = [
-  { number: "7+", label: "Years Experience", icon: Clock },
+  { number: "9+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
   { number: "₹10Cr+", label: "Annual Turnover", icon: DollarSign },
   { number: "18", label: "Branches", icon: MapPin },
@@ -54,7 +54,7 @@ const values = [
 
 const milestones = [
   {
-    year: "2017",
+    year: "2015",
     title: "Foundation",
     description: "Finonest India Pvt. Ltd. was established with a vision to revolutionize financial services",
     icon: Star,
@@ -275,7 +275,7 @@ export default function AboutPage() {
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>We’re on a mission to make financial services more accessible and efficient, with plans to expand to 10 states by the end of FY2026–27. <br>Finonest stands committed to transparency, customer-centric solutions, and building long-term relationships.</span>
+                    <span>We’re on a mission to make financial services more accessible and efficient, with plans to expand to 10 states by the end of FY2026–27. Finonest stands committed to transparency, customer-centric solutions, and building long-term relationships.</span>
                   </li>
                 </ul>
               </div>
