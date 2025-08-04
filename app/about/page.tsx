@@ -114,7 +114,7 @@ const coreBusinessAreas = [
   { name: "Unsecured Credit Lines", code: "UCL", color: "bg-purple-500" },
   { name: "Mortgage Loans", code: "ML", color: "bg-yellow-500" },
   { name: "Home Loans", code: "HL", color: "bg-red-500" },
-  { name: "Car Loan", code: "CL", color: "bg-black-500" },
+  { name: "Car Loan", code: "CL", color: "bg-blue-500" },
   { name: "Working Capital Loans", code: "WC", color: "bg-teal-500" },
 ]
 
