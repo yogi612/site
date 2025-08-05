@@ -128,9 +128,13 @@ export default function ContactSupport() {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+91 9314474723</p>
-                  <p className="text-gray-600">Monday to Saturday, 9am to 6pm</p>
+<h4 className="font-medium text-gray-900">Phone</h4>
+  <ul className="text-gray-600 space-y-1 mt-1">
+    <li>+91 9057778111</li>
+    <li>+91 9057778222</li>
+    <li>+91 9057778333</li>
+  </ul>
+  <p className="text-gray-600 mt-2">Monday to Saturday, 9am to 6pm</p>
                 </div>
               </div>
 
