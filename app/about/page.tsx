@@ -120,15 +120,18 @@ const coreBusinessAreas = [
 
 const leadershipTeam = [
   {
-    name: "Surya Mohan Roy",
-    role: "Leadership, Financial Analysis, Business Development",
-    experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-    image: "/images/surya-roy.jpeg",
-    quote: "Our mission is to democratize financial services across India.",
-  },
+  name: "Surya Mohan Roy",
+  role: "Leadership, Financial Analysis, Business Development",
+  phone: "+91 9057778111",
+  experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
+  image: "/images/surya-roy.jpeg",
+  quote: "Our mission is to democratize financial services across India."
+}
+
   {
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
+    phone: "+91 9057778333",
     experience: "7 years experience (Used Car Loans lead)",
     image: "/images/atishay-jain.jpeg",
     quote: "Data-driven decisions are at the heart of our success story.",
@@ -136,6 +139,7 @@ const leadershipTeam = [
   {
     name: "Prateek Somani",
     role: "Finance & Unsecured Loans",
+    phone: "+91 9057778222",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
     image: "/images/prateek-somani.jpeg",
     quote: "We're building financial solutions that truly serve our customers' needs.",
