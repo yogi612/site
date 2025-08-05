@@ -126,7 +126,7 @@ const leadershipTeam = [
   experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
   image: "/images/surya-roy.jpeg",
   quote: "Our mission is to democratize financial services across India."
-}
+},
 
   {
     name: "Atishay Jain",
