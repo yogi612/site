@@ -181,7 +181,7 @@ export default function Header() {
             </DropdownMenu>
           ) : (
             <Button
-              onClick={() => (window.location.href = "https://dashboard.finonest.com/")}
+              onClick={() => (window.location.href = "https://dashboard.finonest.com/login")}
               variant="default"
               size="sm"
             >
