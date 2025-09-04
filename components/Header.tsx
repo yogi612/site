@@ -29,7 +29,7 @@ const navItems = [
   {
     title: "Tools",
     href: "/tools",
-    subItems: 
+    subItems: [
       { title: "EMI Calculator", href: "/emi-calculator" },
       { title: "Compare Loans", href: "/compare-loans" },
     ],
