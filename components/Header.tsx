@@ -21,7 +21,6 @@ const navItems = [
     subItems: [
       { title: "Loan Assistance", href: "/products/loan-assistance" },
       { title: "Investment & Wealth", href: "/products/investment-wealth" },
-      { title: "Credit Score", href: "/products/credit-score" },
       { title: "Home & Vehicle Loans", href: "/products/home-vehicle-loans" },
       { title: "All Products", href: "/products" },
     ],
