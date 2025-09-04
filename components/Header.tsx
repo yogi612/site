@@ -21,6 +21,7 @@ const navItems = [
     subItems: [
       { title: "Loan Assistance", href: "/products/loan-assistance" },
       { title: "Investment & Wealth", href: "/products/investment-wealth" },
+      { title: "Credit Score", href: "/products/credit-score" },
       { title: "Home & Vehicle Loans", href: "/products/home-vehicle-loans" },
       { title: "All Products", href: "/products" },
     ],
@@ -29,7 +30,7 @@ const navItems = [
     title: "Tools",
     href: "/tools",
     subItems: [
-      { title: "Check Credit Score", href: "/check-cibil" },
+      { title: "Check CIBIL Score", href: "/check-cibil" },
       { title: "EMI Calculator", href: "/emi-calculator" },
       { title: "Compare Loans", href: "/compare-loans" },
     ],
@@ -180,7 +181,7 @@ export default function Header() {
             </DropdownMenu>
           ) : (
             <Button
-              onClick={() => (window.location.href = "https://dashboard.finonest.com/login")}
+              onClick={() => (window.location.href = "https://dashboard.finonest.com/")}
               variant="default"
               size="sm"
             >

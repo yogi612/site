@@ -87,16 +87,12 @@ export default function ContactPage() {
                   <strong>Email:</strong> info@finonest.com
                 </p>
               </div>
-              <div>
-  <h4 className="font-medium text-gray-900">Phone</h4>
-  <ul className="text-gray-600 space-y-1 mt-1">
-    <li>+91 9057778111</li>
-    <li>+91 9057778222</li>
-    <li>+91 9057778333</li>
-  </ul>
-  <p className="text-gray-600 mt-2">Monday to Saturday, 9am to 6pm</p>
-</div>
-
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5 text-primary" />
+                <p>
+                  <strong>Phone:</strong> +91 9314474723
+                </p>
+              </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>

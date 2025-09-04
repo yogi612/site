@@ -1,34 +1,12 @@
 "use client"
 
-import { Target, Shield, Trophy, Heart, MapPin, IndianRupee, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
-// import Image from "next/image" // Removed this line to fix the error
+import { Target, Shield, Trophy, Heart, MapPin, DollarSign, Users, Star, TrendingUp, Award, Clock } from "lucide-react"
+import Image from "next/image"
+import PageLayout from "@/components/PageLayout"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-
-// In your actual Next.js project, ensure your "@/components/PageLayout"
-// is also marked with "use client" if it contains interactive elements or
-// renders client-side components.
-const PageLayout = ({ children, title }) => {
-  return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
-      <header className="bg-white shadow-sm py-4 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-primary">{title}</h1>
-          {/* Add navigation or other header elements here if needed */}
-        </div>
-      </header>
-      <main className="max-w-7xl mx-auto py-12 px-6">
-        {children}
-      </main>
-      <footer className="bg-gray-800 text-white py-8 px-6 text-center">
-        <p>&copy; {new Date().getFullYear()} Finonest India Pvt. Ltd. All rights reserved.</p>
-      </footer>
-    </div>
-  )
-}
-
-// Animation variants for Framer Motion
+// Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -44,12 +22,11 @@ const staggerContainer = {
   },
 }
 
-// Static data for the page sections
 const stats = [
-  { number: "9+", label: "Years Experience", icon: Clock },
+  { number: "7+", label: "Years Experience", icon: Clock },
   { number: "50K+", label: "Happy Customers", icon: Users },
-  { number: "₹20Cr+", label: "Annual Turnover", icon: IndianRupee }, // Fixed: Added icon property
-  { number: "30+", label: "Branches", icon: MapPin },
+  { number: "₹10Cr+", label: "Annual Turnover", icon: DollarSign },
+  { number: "18", label: "Branches", icon: MapPin },
 ]
 
 const values = [
@@ -77,7 +54,7 @@ const values = [
 
 const milestones = [
   {
-    year: "2015",
+    year: "2017",
     title: "Foundation",
     description: "Finonest India Pvt. Ltd. was established with a vision to revolutionize financial services",
     icon: Star,
@@ -114,42 +91,53 @@ const coreBusinessAreas = [
   { name: "Unsecured Credit Lines", code: "UCL", color: "bg-purple-500" },
   { name: "Mortgage Loans", code: "ML", color: "bg-yellow-500" },
   { name: "Home Loans", code: "HL", color: "bg-red-500" },
-  { name: "Car Loan", code: "CL", color: "bg-blue-500" },
   { name: "Working Capital Loans", code: "WC", color: "bg-teal-500" },
 ]
 
 const leadershipTeam = [
   {
-  name: "Surya Mohan Roy",
-  role: "Leadership, Financial Analysis, Business Development",
-  phone: "+91 9057778111",
-  experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
-  image: "/images/surya-roy.jpeg",
-  quote: "Our mission is to democratize financial services across India."
-},
-
+    name: "Surya Mohan Roy",
+    role: "Leadership, Financial Analysis, Business Development",
+    experience: "Experience with top 3 Pvt Banks (ex-HDFC, ICICI, AXIS)",
+    image: "/images/surya-roy.jpeg",
+    quote: "Our mission is to democratize financial services across India.",
+  },
   {
     name: "Atishay Jain",
     role: "Analytics, Quantitative Strategy",
-    phone: "+91 9057778333",
     experience: "7 years experience (Used Car Loans lead)",
     image: "/images/atishay-jain.jpeg",
     quote: "Data-driven decisions are at the heart of our success story.",
   },
   {
-    name: "Prateek Somani",
+    name: "CA Prateek Somani",
     role: "Finance & Unsecured Loans",
-    phone: "+91 9057778222",
     experience: "8+ years experience (ex-CFO, Man Singh Hotels)",
     image: "/images/prateek-somani.jpeg",
     quote: "We're building financial solutions that truly serve our customers' needs.",
   },
+]
+
+const departmentHeads = [
   {
-    name: "Sanam Makkar",
-    role: "Board of Directors",
-    experience: "Joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.",
-    image: "/images/sanam.png",
-    quote: "Strategic governance and innovation are key to our sustained growth.",
+    name: "Rohit Bhargava",
+    division: "ML/HL/Working Capital",
+    experience: "8 years (HDFC, ICICI)",
+  },
+  {
+    name: "Prateek Rathore",
+    division: "Unsecured Loans",
+    experience: "7 years (ICICI)",
+  },
+  {
+    name: "Abhijeet Sengupta",
+    division: "IT & Tech",
+    experience: "22 years in tech industry",
+  },
+  {
+    name: "Akshay Banerjee",
+    division: "Marketing",
+    experience: "6.5 years, ex-Shikhar Masale",
   },
 ]
 
@@ -182,44 +170,27 @@ Pune 411027`,
   },
 ]
 
+
 const testimonials = [
   {
     name: "Rajesh Sharma",
     position: "Business Owner",
     quote: "Finonest helped me secure a business loan when I needed it most. Their process was smooth and efficient.",
-    image: "https://placehold.co/60x60/87CEEB/FFFFFF?text=RS",
+    image: "/confident-indian-professional.png",
   },
   {
     name: "Priya Patel",
     position: "Homeowner",
     quote: "The team at Finonest made my home loan journey stress-free. I'm grateful for their expert guidance.",
-    image: "https://placehold.co/60x60/FFD700/FFFFFF?text=PP",
+    image: "/vibrant-indian-smile.png",
   },
   {
     name: "Vikram Singh",
     position: "Entrepreneur",
     quote: "Their working capital solutions helped my business grow exponentially. Highly recommended!",
-    image: "https://placehold.co/60x60/98FB98/FFFFFF?text=VS",
+    image: "/confident-indian-businessman.png",
   },
 ]
-
-const departmentHeads = [
-  {
-    name: "Prateek Rathore",
-    division: "Operations Head",
-    experience: "10+ years in financial operations, optimizing workflows and ensuring smooth service delivery.",
-  },
-  {
-    name: "Pranay Mukherjee",
-    division: "Marketing Lead",
-    experience: "8 years experience in digital marketing and brand strategy for financial products.",
-  },
-  {
-    name: "Yogendra Singh",
-    division: "IT Management",
-    experience: "2 years experience in credit risk assessment and compliance in the lending sector.",
-  },
-];
 
 export default function AboutPage() {
   const [activeLeader, setActiveLeader] = useState(0)
@@ -232,9 +203,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 rounded-3xl"></div>
           <div className="relative z-10 py-16 px-8 text-white">
             <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4"> Financial Services Since 2015</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Transforming Financial Services Since 2017</h1>
               <p className="text-xl opacity-90 mb-8">
-                One of the top 2 used car loan providers in Rajasthan, with 30+ branches and counting
+                One of the top 3 used car loan providers in Rajasthan, with 19 branches and counting
               </p>
               <div className="flex justify-center">
                 <a
@@ -258,14 +229,13 @@ export default function AboutPage() {
           className="py-8"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
+            {stats.map((stat, index) => (
               <motion.div
-                key={stat.label}
+                key={index}
                 variants={fadeIn}
                 className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300"
               >
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {/* This will now render correctly */}
                   <stat.icon className="h-8 w-8 text-primary" />
                 </div>
                 <p className="text-4xl font-bold text-primary mb-1">{stat.number}</p>
@@ -286,13 +256,12 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-lg"></div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg"></div>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3"
               alt="Finonest team"
               width={1000}
               height={600}
               className="rounded-lg shadow-xl relative z-10"
-              onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/1000x600/CCCCCC/000000?text=Finonest+Team" }}
             />
           </div>
           <div>
@@ -302,16 +271,12 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4">
               <p className="text-lg">
-                <strong>Finonest India Pvt. Ltd.</strong> Founded by Surya Mohan Roy and CA Prateek Somani in 2015 under the brand name Finance Hackers, and joined by Atishay Jain as Co-founder in 2018, Finonest India Pvt Ltd has grown into a dynamic and trusted player in the financial services sector.
+                <strong>Finonest India Pvt. Ltd.</strong> was established in 2017 and has quickly grown to become one of
+                the top 3 used car loan providers in Rajasthan.
               </p>
               <p className="text-lg">
-                Finonest specializes in customer acquisition for a diverse range of financial products including loans, credit cards, insurance, and investment solutions. With established partnerships across 38+ banks and NBFCs, we deliver customized financial offerings that serve customers' real-world needs.
-              </p>
-              <p className="text-lg">
-                Operating from its strong base in Rajasthan, Finonest has expanded its footprint to Gujarat and Maharashtra, with more than 30 operational branches and a committed workforce of over 200 professionals.
-              </p>
-              <p className="text-lg">
-                In a strategic move to strengthen governance and innovation, Sanam Makkar joined the Board of Directors in 2025, bringing valuable insight and leadership to the company’s continued growth.
+                We specialize in used car loans and broader financial services, with plans to expand to Gujarat and
+                Madhya Pradesh in the next quarter.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary mt-6">
                 <h3 className="font-bold text-lg mb-2">Our Key Strengths</h3>
@@ -320,25 +285,19 @@ export default function AboutPage() {
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Operating from its strong base in Rajasthan.</span>
+                    <span>In-house operations and sales team</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Expanded its footprint to Gujarat and Maharashtra, with over 30 operational branches and 200+ professionals.</span>
+                    <span>360° service across multiple loan products</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
                       <Shield className="h-4 w-4 text-primary" />
                     </div>
-                    <span>Sanam Makkar joined the Board of Directors in 2025, enhancing governance and innovation.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-primary/20 p-1 rounded mr-2 mt-1">
-                      <Shield className="h-4 w-4 text-primary" />
-                    </div>
-                    <span>Plans to expand to 10 states by the end of FY2026–27, committed to transparency and customer-centric solutions.</span>
+                    <span>Strong post-sales support and client retention</span>
                   </li>
                 </ul>
               </div>
@@ -361,9 +320,9 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {coreBusinessAreas.map((area) => (
+            {coreBusinessAreas.map((area, index) => (
               <motion.div
-                key={area.name}
+                key={index}
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
               >
@@ -399,9 +358,9 @@ export default function AboutPage() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white px-8 py-6 rounded-xl shadow-lg text-center w-full md:w-auto"
               >
-                <p className="text-gray-500 mb-2">FY 2024-25 Turnover (projected)</p>
+                <p className="text-gray-500 mb-2">FY 2023-24 Turnover (projected)</p>
                 <div className="flex items-center justify-center">
-                  <IndianRupee className="h-8 w-8 text-primary mr-2" />
+                  <DollarSign className="h-8 w-8 text-primary mr-2" />
                   <p className="text-4xl font-bold text-primary">₹10 crore</p>
                 </div>
               </motion.div>
@@ -439,7 +398,7 @@ export default function AboutPage() {
             <div className="flex justify-center mb-8">
               {leadershipTeam.map((leader, idx) => (
                 <button
-                  key={leader.name}
+                  key={idx}
                   onClick={() => setActiveLeader(idx)}
                   className={`mx-2 p-2 rounded-full transition-all duration-300 ${
                     activeLeader === idx ? "bg-primary text-white" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
@@ -447,13 +406,12 @@ export default function AboutPage() {
                 >
                   <span className="sr-only">{leader.name}</span>
                   <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <img
-                      src={leader.image}
+                    <Image
+                      src={leader.image || "/placeholder.svg"}
                       alt={leader.name}
                       width={48}
                       height={48}
                       className="object-cover"
-                      onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/48x48/CCCCCC/000000?text=User" }}
                     />
                   </div>
                 </button>
@@ -473,13 +431,12 @@ export default function AboutPage() {
                   <div className="text-center">
                     <div className="relative inline-block">
                       <div className="absolute inset-0 bg-primary/20 rounded-full transform -rotate-6"></div>
-                      <img
-                        src={leadershipTeam[activeLeader].image}
+                      <Image
+                        src={leadershipTeam[activeLeader].image || "/placeholder.svg"}
                         alt={leadershipTeam[activeLeader].name}
                         width={200}
                         height={200}
                         className="rounded-full relative z-10"
-                        onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/200x200/CCCCCC/000000?text=User" }}
                       />
                     </div>
                     <h3 className="text-2xl font-bold mt-4">{leadershipTeam[activeLeader].name}</h3>
@@ -517,9 +474,9 @@ export default function AboutPage() {
               <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
             </span>
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {departmentHeads.map((head) => (
-              <motion.div key={head.name} whileHover={{ y: -5 }} className="bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {departmentHeads.map((head, index) => (
+              <motion.div key={index} whileHover={{ y: -5 }} className="bg-white rounded-xl shadow-md overflow-hidden">
                 <div className="h-2 bg-primary"></div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-1">{head.name}</h3>
@@ -546,16 +503,15 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial) => (
-              <motion.div key={testimonial.name} whileHover={{ scale: 1.03 }} className="bg-white p-6 rounded-xl shadow-lg">
+            {testimonials.map((testimonial, index) => (
+              <motion.div key={index} whileHover={{ scale: 1.03 }} className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
+                  <Image
+                    src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.name}
                     width={60}
                     height={60}
                     className="rounded-full mr-4"
-                    onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/60x60/CCCCCC/000000?text=User" }}
                   />
                   <div>
                     <h3 className="font-bold">{testimonial.name}</h3>
@@ -590,21 +546,24 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl"></div>
             <div className="relative z-10 p-8">
-              <p className="text-lg text-center mb-6">We operate 30+ branches across Rajasthan:</p>
+              <p className="text-lg text-center mb-6">We operate 18 branches across Rajasthan:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {branchLocations.map((location) => {
+                {branchLocations.map((location, index) => {
+                  const name = typeof location === "string" ? location : location.name;
+                  const address = typeof location === "object" ? location.address : null;
+
                   return (
                     <motion.div
-                      key={location.name}
+                      key={index}
                       whileHover={{ scale: 1.05 }}
                       className="group relative bg-white p-3 rounded-lg shadow-md border border-gray-100 flex items-center justify-center text-center"
                     >
                       <MapPin className="h-4 w-4 text-primary mr-2" />
-                      <span>{location.name}</span>
+                      <span>{name}</span>
 
-                      {location.address && (
+                      {address && (
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-72 bg-black/90 text-white text-sm p-3 rounded-lg shadow-xl whitespace-pre-line opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
-                          {location.address}
+                          {address}
                         </div>
                       )}
                     </motion.div>
@@ -636,7 +595,7 @@ export default function AboutPage() {
             <div className="relative z-10">
               {milestones.map((milestone, index) => (
                 <motion.div
-                  key={milestone.year}
+                  key={index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -685,9 +644,9 @@ export default function AboutPage() {
             </span>
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {values.map((value) => (
+            {values.map((value, index) => (
               <motion.div
-                key={value.title}
+                key={index}
                 variants={fadeIn}
                 whileHover={{ y: -10 }}
                 className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
@@ -713,13 +672,12 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-lg"></div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-lg"></div>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3"
               alt="Finonest team meeting"
               width={1000}
               height={600}
               className="rounded-xl shadow-2xl relative z-10"
-              onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/1000x600/CCCCCC/000000?text=Team+Meeting" }}
             />
           </div>
         </motion.section>
