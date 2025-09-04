@@ -29,8 +29,7 @@ const navItems = [
   {
     title: "Tools",
     href: "/tools",
-    subItems: [
-      { title: "Check CIBIL Score", href: "/check-cibil" },
+    subItems: 
       { title: "EMI Calculator", href: "/emi-calculator" },
       { title: "Compare Loans", href: "/compare-loans" },
     ],
