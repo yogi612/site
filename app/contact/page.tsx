@@ -137,13 +137,7 @@ export default function ContactPage() {
               {/* Privacy Policy Notice */}
               <div className="text-xs text-gray-600 border border-gray-200 rounded p-3 bg-gray-50">
                 By submitting this form, you agree to the <a href="/privacy-policy" className="underline text-primary" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. Also, you hereby grant us permission to contact you via SMS, WhatsApp, RCS, Email, and any other channel.
-                <br /><br />
-                "When You visit Finonest’s website or send emails to us, You are communicating with us electronically. We communicate with You by email, SMS, RCS, or by posting notices on the website. For contractual purposes, You consent to receive communications from us electronically, and You agree that all agreements, notices, disclosures, and other communications that we provide to You electronically satisfy any legal requirement that such communications be in writing. This condition does not affect Your statutory rights.
-                <br /><br />
-                You understand that once You register as a Finonest user on the Finonest platform, and upon placing any order on our website, we shall be entitled to use your registered mobile number on the website to send transaction-related SMS or RCS to You, irrespective of DND services being activated on your mobile. We may occasionally send promotional SMS or RCS to your registered mobile number.
-                <br /><br />
-                The Customer hereby authorizes Finonest to send transactional SMS or RCS to his/her registered number, even if the number is registered under the DND ("Do Not Disturb") service.
-              </div>
+               </div>
               <Button type="submit">Send Message</Button>
             </form>
           </div>
